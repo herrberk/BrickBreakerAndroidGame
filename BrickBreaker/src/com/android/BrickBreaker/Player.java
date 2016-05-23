@@ -7,6 +7,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
+/**
+ * Contains all the necessary components for the player/ controls the speed 
+ * and the position of the paddle
+ * Draws the paddle onto the canvas depending on the level (Different size paddles).
+ * @author Berk
+ */
 public class Player {
 
     private float x, y;
@@ -19,7 +25,7 @@ public class Player {
     private boolean isAlive;
     private int remaininglives;
     
-    public Player(Resources res) {
+    Player(Resources res) {
         bitmap = BitmapFactory.decodeResource(res, R.drawable.paddle);
         height = bitmap.getHeight();
         width = bitmap.getWidth();
@@ -30,11 +36,11 @@ public class Player {
         remaininglives = 3;
     }
     
-    public void doDraw(Canvas canvas) {
+    void doDraw(Canvas canvas) {
         canvas.drawBitmap(bitmap, x, y, null);
     }
 
-    public void animate(int orientation) {
+    void animate(int orientation) {
     	if (orientation < 0) {
     		x=x-14;
     	}
@@ -50,7 +56,7 @@ public class Player {
     		
     }
     
-    public void loseOneLife() {
+    void loseOneLife() {
     	if (remaininglives-- == 1) {
     		gameOver();
     	}
@@ -58,37 +64,37 @@ public class Player {
         y = GameView.height - 50;
     }
 
-    public boolean isAlive() {
+    boolean isAlive() {
     	return isAlive;
     }
 
-    public void gameOver() {
+    void gameOver() {
     	isAlive = false;
     }
     
-    public int getRemainingLives() {
+    int getRemainingLives() {
     	return remaininglives;
     }
     
-    public float getWidth(){
+    float getWidth(){
     	return width;
     }
     
-    public float level2(Resources res, Canvas canvas){
+    float level2(Resources res, Canvas canvas){
     	bitmap = BitmapFactory.decodeResource(res, R.drawable.paddle2);
     	canvas.drawBitmap(bitmap, x, y, null);
     	width = bitmap.getWidth();
     
         return width;
     }
-    public float level3(Resources res, Canvas canvas){
+    float level3(Resources res, Canvas canvas){
     	bitmap = BitmapFactory.decodeResource(res, R.drawable.paddle3);
     	canvas.drawBitmap(bitmap, x, y, null);
     	width = bitmap.getWidth();
     
         return width;
     }
-    public float level5(Resources res, Canvas canvas){
+    float level5(Resources res, Canvas canvas){
     	bitmap = BitmapFactory.decodeResource(res, R.drawable.paddle4);
     	canvas.drawBitmap(bitmap, x, y, null);
     	width = bitmap.getWidth();
@@ -96,15 +102,15 @@ public class Player {
         return width;
     }
 
-    public float getHeight(){
+   float getHeight(){
     	return height;
     }
 
-    public float getX() {
+    float getX() {
     	return x;
     }
     
-    public float getY() {
+    float getY() {
     	return y;
     }
 

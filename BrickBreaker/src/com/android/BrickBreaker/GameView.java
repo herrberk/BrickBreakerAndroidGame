@@ -1,6 +1,5 @@
 package com.android.BrickBreaker;
 
-
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import com.android.BrickBreaker.R;
@@ -22,8 +21,12 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-
-
+/**
+ * The GameView starts the GamThread, implements all the game logic,
+ * manages the background music and the sound effects,
+ * (Heart of the game.)
+ * @author Berk
+ */
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	private int level=1;
 	private int score=0;
@@ -130,21 +133,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		if(background != null)
 			background.release();
 
-
 	}
-
-
-
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		ball.start();
 		return super.onTouchEvent(event);
 	}
-
-
-
-
 
 	public void doDraw(Canvas canvas) {
 
@@ -205,16 +200,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 						} finally{
 
 							System.exit(0);
-
-
 						}
-
 					}
-
 				};
 				timer.start();
-
-
 			}
 			else   // LOSING THE GAME
 			{
@@ -230,7 +219,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 				canvas.drawText("Restarting The Game... " , width - 280, height - 80, paint);
 				canvas.drawText("Remaining Lives: "+ player.getRemainingLives(), width - 250, height - 15, paint);
 
-
 				Thread timer = new Thread(){
 					public void run(){
 						try{
@@ -240,15 +228,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 						} finally{
 
 							System.exit(0);
-
-
 						}
-
 					}
-
 				};
 				timer.start();
-
 			}
 		}
 	}
@@ -287,14 +270,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
 				if(bricksHit==27) 
 				{
-
 					level=5;
 					player.level5(getResources(), canvas);
 				}
-
-
-
-
 				if (ball.isMovin() == true)
 					ball.animate(passedTime);
 				else
@@ -324,8 +302,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 						ball.setY(player.getY() - ball.getHeight());
 						ball.setSpeedX(ball.getSpeedX());
 						ball.setSpeedY(ball.getSpeedY());
-
-
 					}
 				}
 			}
@@ -359,12 +335,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 									score=score+5;
 								}
 
-
 								if (mpBrick != null)
 									mpBrick.start();
-
-
-
 
 								if (bricksHit == (columnNum * rowNum)){
 									player.gameOver();break;}
@@ -394,10 +366,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 									ball.setY(brick.getY() + Brick.getHeight());
 								}
 								break;
-
 							}
 						}
-
 					}
 				}
 			}

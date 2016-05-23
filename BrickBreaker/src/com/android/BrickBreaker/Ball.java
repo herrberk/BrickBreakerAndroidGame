@@ -7,6 +7,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
+/**
+ * Contains all the necessary components for the ball/ controls the speed of the ball
+ * Draws the ball onto the canvas
+ * @author Berk
+ */
 public class Ball {
     private float x, y;
     
@@ -19,7 +24,7 @@ public class Ball {
     
     private boolean isMoving = false;
     
-    public Ball(Resources res, int initX, int initY) {
+    Ball(Resources res, int initX, int initY) {
         bitmap = BitmapFactory.decodeResource(res, R.drawable.top);
         x = initX;
         y = initY;
@@ -27,17 +32,17 @@ public class Ball {
         speedY = initSpeedY;
     }
     
-    public void doDraw(Canvas canvas) {
+    void doDraw(Canvas canvas) {
         canvas.drawBitmap(bitmap, x, y, null);
     }
     
-    public void animate(long passedTime) {
+    void animate(long passedTime) {
        	x += speedX * (passedTime / 15f);
        	y += speedY * (passedTime / 15f);
        	hitPageBorder();
     }
 
-    private void hitPageBorder() {
+    void hitPageBorder() {
         if (x <= 0) {
             speedX = -speedX;
             x = 0;
@@ -52,57 +57,57 @@ public class Ball {
         }
     }
     
-    public int getSpeedX() {
+    int getSpeedX() {
     	return speedX;
     }
 
-    public int getSpeedY() {
+    int getSpeedY() {
     	return speedY;
     }
     
-    public float setSpeedX(int newSpeed) {
+    float setSpeedX(int newSpeed) {
     	speedX = newSpeed;
     return speedX;
     }
 
-    public float setSpeedY(int newSpeed) {
+    float setSpeedY(int newSpeed) {
     	speedY = newSpeed;
     return speedY;
     }
 
-    public float getX() {
+   float getX() {
     	return x;
     }
     
-    public float getY() {
+    float getY() {
     	return y;
     }
     
-    public void setX(float newX) {
+    void setX(float newX) {
     	x = newX;
     }
     
-    public void setY(float newY) {
+    void setY(float newY) {
     	y = newY;
     }
     
-    public int getWidth() {
+    int getWidth() {
     	return bitmap.getWidth();
     }
 
-    public int getHeight() {
+    int getHeight() {
     	return bitmap.getHeight();
     }
     
-    public void stop() {
+    void stop() {
     	isMoving = false;
     }
 
-    public void start() {
+    void start() {
     	isMoving = true;
     }
     
-    public boolean isMovin() {
+    boolean isMovin() {
     	return isMoving;
     }
 }

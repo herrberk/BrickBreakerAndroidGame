@@ -17,6 +17,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+/**
+ * Main Activity of the game. Gets the selected image if selected otherwise default
+ * Creates and manages all the layouts of the game.
+ * @author Berk
+ *
+ */
 
 public class Main extends Activity implements OnClickListener {
 	 
@@ -34,11 +40,9 @@ public class Main extends Activity implements OnClickListener {
         Bitmap bitmap = BitmapFactory.decodeFile(image_path,options);
         image.setImageBitmap(bitmap);
 
-        
         if(bitmap==null){
         	image.setImageResource(R.drawable.wp2);
         }
-        
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -57,14 +61,12 @@ public class Main extends Activity implements OnClickListener {
         game.addView(gameWidgets);
         setContentView(game);        
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-  
     }
 
     public void onClick(View v) {
          Intent intent = new Intent(this, Main.class);
          startActivity(intent);
-        
-        
+
     }
 
 	@Override
@@ -72,7 +74,6 @@ public class Main extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onPause();
 		finish();
-
 	}
   
 }

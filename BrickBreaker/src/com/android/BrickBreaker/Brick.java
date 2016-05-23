@@ -1,13 +1,16 @@
 package com.android.BrickBreaker;
 
 import com.android.BrickBreaker.R;
-
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
+/**
+ * Contains all the necessary  information for a brick/ draws it onto the canvas.
+ * @author Berk
+ */
 public class Brick {
     private float x, y;
     
@@ -18,9 +21,8 @@ public class Brick {
     
     private Bitmap bitmap;
     
-    public Brick(Resources res, int ilkX, int ilkY) {
-    	
-    
+    Brick(Resources res, int ilkX, int ilkY) {
+    	    
         bitmap = BitmapFactory.decodeResource(res, R.drawable.tugla);
     	
     	x = ilkX;
@@ -28,24 +30,22 @@ public class Brick {
         alive = true;
     }
     
-   
-    
-    public void doDraw(Canvas canvas) {
+    void doDraw(Canvas canvas) {
         canvas.drawBitmap(bitmap, null, new Rect((int)x, (int)y, (int)(x+width), (int)(y+height)), null);
     }
     
-    public void hit() {
+    void hit() {
     	alive = false;
     }
 
-    public boolean isAlive() {
+    boolean isAlive() {
     	return alive;
     }
 
-    public static void setWidth(float widths){
+    static void setWidth(float widths){
     	width = widths;
     }
-    public void setLevel(Resources res, int level){
+    void setLevel(Resources res, int level){
     	    if (level==2)
         	bitmap = BitmapFactory.decodeResource(res, R.drawable.tugla2);
         	else if (level==3)
@@ -56,23 +56,23 @@ public class Brick {
             bitmap = BitmapFactory.decodeResource(res, R.drawable.tugla5);
             			
     }
-    public static void setHeight(float heights){
+   static void setHeight(float heights){
     	height = heights;
     }
     
-    public static float getWidth(){
+    static float getWidth(){
     	return width;
     }
 
-    public static float getHeight(){
+    static float getHeight(){
     	return height;
     }
 
-    public float getX() {
+    float getX() {
     	return x;
     }
     
-    public float getY() {
+    float getY() {
     	return y;
     }
 }

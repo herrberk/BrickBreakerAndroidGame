@@ -1,0 +1,25 @@
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/wp2">
+
+    <com.android.BrickBreaker.GameView
+        android:layout_width="fill_parent"
+ 		 android:layout_height="fill_parent" />
+    
+	<ImageView
+        android:id="@+id/imageView1"
+        android:contentDescription="@string/desc"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="0dp"
+		android:layout_marginTop="0dp"
+		android:scaleType="centerInside" />
+        
+        
+        
+
+
+    
+</FrameLayout>

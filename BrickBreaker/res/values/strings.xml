@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World!</string>
+    <string name="app_name">Brick Breaker</string>
+    <string name="startgame">Quick Start</string>
+     <string name="desc">BG image</string>
+     
+     <string name="selectimage">Select Background Image</string>
+</resources>
